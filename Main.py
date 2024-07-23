@@ -1,43 +1,43 @@
 import json
 
- with open("data.json", 'r') as file:
-     content = file.read()
+with open("data.json", 'r') as file:
+    content = file.read()
 
- data = json.loads(content)
-
-
-
- score = 1
+data = json.loads(content)
 
 
 
- for question in data:
-
-     print(question['questions_text'])
-
-     for index, alternative in enumerate(question['alternatives']):
-
-         print(index + 1, "-", alternative)
-
-     user_choice = int(input('Enter your answer: '))
-
-     question['user_choice'] = user_choice
-
-     if question["user_choice"] == question["correct_answer"]:
-
-         print('Correct')
-
-         score = score + 1
+score = 1
 
 
 
- for index, question in enumerate(data):
+for question in data:
 
-     message = (f" your your answer: {question['user_choice']}, "
+    print(question['questions_text'])
 
-                f"Correct Answer: {question['correct_answer']}")
+    for index, alternative in enumerate(question['alternatives']):
 
-     print(index +1, '-', message)
+        print(index + 1, "-", alternative)
 
- print(f"Your score is {score}/{len(data)}")
+    user_choice = int(input('Enter your answer: '))
+
+    question['user_choice'] = user_choice
+
+    if question["user_choice"] == question["correct_answer"]:
+
+        print('Correct')
+
+        score = score + 1
+
+
+
+for index, question in enumerate(data):
+
+    message = (f" your your answer: {question['user_choice']}, "
+
+               f"Correct Answer: {question['correct_answer']}")
+
+    print(index +1, '-', message)
+
+print(f"Your score is {score}/{len(data)}")
 
